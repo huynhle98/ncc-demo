@@ -1,0 +1,31 @@
+.sidebar {
+  background: #191718;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 100vh;
+  list-style-type: none;
+  padding: 0;
+  font-weight: 700;
+  overflow: hidden;
+  margin: 0;
+
+  // height: 935px;
+  &-item {
+    color: #AAAAAA;
+    height: 44px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    border-bottom: 1px solid #5C5C5C;
+
+
+    &:hover {
+      color: #FFFFFF;
+      background: #5C5C5C;
+      cursor: pointer;
+    }
+  }
+}
