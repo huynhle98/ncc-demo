@@ -38,6 +38,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+    margin-bottom: 60px;
 
     .item {
       width: 30%;
@@ -45,6 +46,7 @@
       img {
         width: 100px;
         height: 100px;
+        margin-right: 10px;
       }
     }
   }
