@@ -1,3 +1,9 @@
-<ul class="sidebar">
-  <li *ngFor="let item of menu" class="sidebar-item">{{item.lablel}}</li>
-</ul>
+<div class="sidebar">
+  <img src="../../../assets/imgs/icons8-menu-100.svg" alt="menu" class="menu-button" (click)="onClickMenu(sidebarItems)"
+    *ngIf="!isOpenMenu" />
+  <ul class="sidebar-items" #sidebarItems>
+    <li *ngFor="let item of menu" class="sidebar-item" [ngClass]="{'active': checkRouter(item.link)}"
+      [routerLink]="item.link" (click)="onClickMenu(sidebarItems)">{{item.lablel}}</li>
+  </ul>
+</div>
+<div class="overlay" *ngIf="isOpenMenu" (click)="onClickMenu(sidebarItems)"></div>

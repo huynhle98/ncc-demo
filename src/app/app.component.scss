@@ -1,3 +1,53 @@
 .content-right {
   margin-left: 150px;
 }
+
+
+:host ::ng-deep {
+  @media only screen and (max-width: 968px) {
+
+    .content-right {
+      .items {
+        flex-wrap: wrap;
+
+        div.item {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .sidebar {
+      &-items {
+        transform: translate3d(-100%, 0, 0);
+      }
+
+      .menu-button {
+        display: block !important;
+      }
+    }
+
+    div.overlay {
+      display: block;
+    }
+
+    .content-right {
+      margin: 0;
+
+      .content {
+        img.logo {
+          width: 200px;
+          object-fit: contain;
+        }
+
+        .items .item {
+          img.item-img {
+            width: 70px;
+            height: 70px;
+          }
+        }
+      }
+    }
+  }
+}

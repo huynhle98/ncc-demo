@@ -1,17 +1,23 @@
 .sidebar {
-  background: #191718;
   position: fixed;
   top: 0;
   left: 0;
-  width: 150px;
-  height: 100vh;
-  list-style-type: none;
-  padding: 0;
-  font-weight: 700;
-  overflow: hidden;
-  margin: 0;
+  width: 0;
+  z-index: 1000;
 
-  // height: 935px;
+  &-items {
+    position: fixed;
+    background: #191718;
+    width: 150px;
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+    font-weight: 700;
+    overflow: hidden;
+    margin: 0;
+    transition-duration: 200ms;
+  }
+
   &-item {
     color: #AAAAAA;
     height: 44px;
@@ -22,10 +28,31 @@
     border-bottom: 1px solid #5C5C5C;
 
 
-    &:hover {
+    &:hover,
+    &.active {
       color: #FFFFFF;
       background: #5C5C5C;
       cursor: pointer;
     }
   }
+
+  .menu-button {
+    display: none;
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    position: absolute;
+    cursor: pointer;
+  }
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
 }
