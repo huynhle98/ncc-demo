@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,24 +17,32 @@ export class SidebarComponent implements OnInit {
 
   isOpenMenu = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private elementRef: ElementRef) { }
 
   ngOnInit(): void {
   }
 
-  onClickMenu(sidebarItems: HTMLElement) {
+  onClickMenu() {
     this.isOpenMenu = !this.isOpenMenu;
-    if (this.isOpenMenu) {
-      console.log(sidebarItems);
-      sidebarItems.style.transform = 'translate3d(0, 0, 0)';
+    const sidebarItemsEl = this.elementRef.nativeElement.querySelector('.sidebar-items') as HTMLElement
+    if (this.isOpenMenu && sidebarItemsEl) {
+      sidebarItemsEl.style.transform = 'translate3d(0, 0, 0)';
       document.body.style.overflow = 'hidden';
     } else {
-      sidebarItems.style.transform = '';
+      sidebarItemsEl.style.transform = '';
       document.body.style.overflow = '';
     }
   }
 
   checkRouter(url: string): boolean {
     return this.router.url === url;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    if (window.innerWidth <= 768) {
+      this.isOpenMenu = true;
+      this.onClickMenu();
+    }
   }
 }
